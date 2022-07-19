@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "jenkins-tfstate-bucket"
+    bucket = "jenkins1-tfstate-bucket"
     key    = "terraform.tfstate"
     region = "us-east-1"
     dynamodb_table = "GameScores"
@@ -52,7 +52,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
 
 
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
-  name           = "GameScores1"
+  name           = "Game-Scores"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
