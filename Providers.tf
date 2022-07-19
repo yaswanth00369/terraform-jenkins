@@ -7,13 +7,13 @@ terraform {
     bucket = "jenkins1-tfstate-bucket"
     key    = "terraform.tfstate"
     region = "us-east-1"
-    dynamodb_table = "GameScores"
+    dynamodb_table = "Game-Scores"
   }
 } 
 
 
 resource "aws_s3_bucket" "example" {
-  bucket = "jenkins-tfstate-bucket"
+  bucket = "jenkins1-tfstate-bucket"
 }
 
 resource "aws_s3_bucket_public_access_block" "example" {
