@@ -5,8 +5,8 @@ pipeline{
         stage("Terraform Init & Apply - Development Env"){
             steps{
                 sh "terraform init"
-                sh "terraform workspace new Production"
-                sh "terraform apply -var-file=prod.tfvars --auto-approve"
+                sh returnStatus: true, script: 'terraform workspace new Development'
+                sh "terraform apply -var-file=dev.tfvars --auto-approve"
             }
         }
     }
