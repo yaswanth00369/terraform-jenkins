@@ -6,7 +6,7 @@ pipeline{
             steps{
                 sh "terraform init"
                 sh "terraform workspace new development"
-                sh "terraform apply -file-vars=dev.tfvars --auto-approve"
+                sh "terraform apply -var-file=dev.tfvars --auto-approve"
             }
         }
     }
