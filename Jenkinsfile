@@ -10,7 +10,6 @@ pipeline{
             }
         }
     }
-
     stages{    
         stage("Terraform Init & Apply - Prod Env"){
             steps{
