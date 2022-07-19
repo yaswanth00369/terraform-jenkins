@@ -7,7 +7,6 @@ pipeline{
                 sh "terraform init"
                 sh "terraform workspace new development"
                 sh "terraform apply -file-vars=dev.tfvars --auto-approve"
-
             }
         }
     }
