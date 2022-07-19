@@ -2,11 +2,18 @@ pipeline{
     agent any
     environment { PATH = "${PATH}:${getTerraformPath()}" }
     stages{
-        stage("Terraform Init & Apply - Development Env"){
+        stage("Terraform Init & Apply - Dev & Prod Env"){
             steps{
                 sh "terraform init"
                 sh returnStatus: true, script: 'terraform workspace new Development'
                 sh "terraform apply -var-file=dev.tfvars --auto-approve"
+            }
+            post{
+                success{
+                    sh "terraform init"
+                    sh returnStatus: true, script: 'terraform workspace new Production'
+                    sh "terraform apply -var-file=prod.tfvars --auto-approve"
+                }
             }
         }
     }
