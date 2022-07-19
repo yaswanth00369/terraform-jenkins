@@ -9,7 +9,9 @@ pipeline{
                 sh "terraform apply -var-file=dev.tfvars --auto-approve"
             }
         }
-        
+    }
+
+    stages{    
         stage("Terraform Init & Apply - Prod Env"){
             steps{
                 sh "terraform init"
