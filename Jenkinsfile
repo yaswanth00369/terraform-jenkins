@@ -16,6 +16,7 @@ pipeline{
                 sh returnStatus: true, script: 'terraform workspace new Production'
                 sh "terraform apply -var-file=prod.tfvars --auto-approve"
             }
+        }   
     }
 }
 
