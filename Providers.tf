@@ -11,7 +11,7 @@ terraform {
   }
 } 
 
-
+/* 
 resource "aws_s3_bucket" "example" {
   bucket = "jenkins1-tfstate-bucket"
 }
@@ -62,5 +62,5 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
     name = "LockID"
     type = "S"
   }
-} 
+}  */
 
