@@ -18,7 +18,7 @@ pipeline{
 
         stage("Terraform Init & Apply - Dev Env"){
             steps{
-                sh "terraform init -reconfigure"
+                sh "terraform init"
                 sh returnStatus: true, script: 'terraform workspace new Development'
                 sh "terraform workspace select Development"
                 sh "terraform apply -var-file=dev.tfvars --auto-approve"
