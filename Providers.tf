@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "jenkins1-tfstate-bucket"
+    bucket = "jenkins-tfstate-bucket"
     key    = "terraform.tfstate"
     region = "us-east-1"
     dynamodb_table = "Game-Scores"

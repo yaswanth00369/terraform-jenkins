@@ -6,7 +6,7 @@ pipeline{
 
         stage("Create S3 Bucket"){
             steps{
-                createS3Bucket('jenkins1-tfstate-bucket')
+                createS3Bucket('jenkins-tfstate-bucket')
             }
         }
 
@@ -42,9 +42,11 @@ def getTerraformPath() {
 }
 
 def createS3Bucket(bucketName){
-    sh returnStatus: true, script: " aws s3 mb s3://${bucketName} --region us-east-1"
+    // sh returnStatus: true, script: " aws s3 mb s3://${bucketName} --region us-east-1"
+    sh returnStatus: true, script: " aws s3api put-bucket-versioning --bucket ${bucketName} --versioning-configuration Status=Enabled --region us-east-1"
 }
 
 def createDynamoDBTable(){
     sh returnStatus: true, script: "aws dynamodb create-table --cli-input-json file://create-ddb-table.json --region us-east-1"
 }
+
