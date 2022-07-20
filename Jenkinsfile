@@ -12,7 +12,7 @@ pipeline{
 
         stage("Create DynamoDB Table"){
             steps{
-                createDynamoDBTable('Game-Scores')
+                createDynamoDBTable()
             }
         }
 
@@ -45,6 +45,6 @@ def createS3Bucket(bucketName){
     sh returnStatus: true, script: " aws s3 mb s3://${bucketName} --region us-east-1"
 }
 
-def createDynamoDBTable(tableName){
+def createDynamoDBTable(){
     sh returnStatus: true, script: "aws dynamodb create-table --cli-input-json file://create-Ddb-table.json --region us-east-1"
 }
