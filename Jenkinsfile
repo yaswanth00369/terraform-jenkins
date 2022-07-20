@@ -3,7 +3,6 @@ pipeline{
     environment { PATH = "${PATH}:${getTerraformPath()}" }
 
     stages{
-
         stage("Create S3 Bucket")
             steps{
                 createS3Bucket('jenkins1-tfstate-bucket')
