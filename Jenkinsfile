@@ -43,7 +43,7 @@ def getTerraformPath() {
 
 def createS3Bucket(bucketName){
     // sh returnStatus: true, script: " aws s3 mb s3://${bucketName} --region us-east-1"
-    sh returnStatus: true, script: " aws s3api put-bucket-versioning --bucket ${bucketName} --versioning-configuration Status=Enabled --region us-east-1"
+    sh returnStatus: true, script: " aws s3api --bucket ${bucketName} put-bucket-versioning --versioning-configuration Status=Enabled --region us-east-1"
 }
 
 def createDynamoDBTable(){
