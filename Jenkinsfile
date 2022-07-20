@@ -3,16 +3,18 @@ pipeline{
     environment { PATH = "${PATH}:${getTerraformPath()}" }
 
     stages{
-        stage("Create S3 Bucket")
+
+        stage("Create S3 Bucket"){
             steps{
                 createS3Bucket('jenkins1-tfstate-bucket')
             }
+        }
 
-        stage("Create DynamoDB Table")
+        stage("Create DynamoDB Table"){
             steps{
                 createDynamoDBTable('Game-Scores')
             }
-            
+        }
 
         stage("Terraform Init & Apply - Dev Env"){
             steps{
