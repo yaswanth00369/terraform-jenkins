@@ -47,6 +47,6 @@ def createS3Bucket(bucketName){
 }
 
 def createDynamoDBTable(){
-    sh returnStatus: true, script: "aws dynamodb create-table --cli-input-json file://create-ddb-table.json --region us-east-1"
+    sh returnStatus: true, script: "aws dynamodb create-table --cli-input-json file://create-Ddb-table.json --region us-east-1"
 }
 
