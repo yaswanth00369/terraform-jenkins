@@ -20,7 +20,7 @@
           key: "{{ key }}"
           dynamodb_table: "{{ dynamodb_table }}"
 
-        variables_files: "{{ app_env }}.tfvars"
+        variables_file: "{{ app_env }}.tfvars"
         workspace: "{{ app_env }}"
 
 
