@@ -6,7 +6,7 @@
     key: terraform.tfstate
     bucket: jenkins-tfstate-bucket
     dynamodb_table: Game-Scores
-    app_env: dev
+    app_env: default
 
   tasks:
     - name: Run The Terraform Scripts

@@ -16,6 +16,12 @@ pipeline{
             }
         }
 
+        stage("Terraform Init & Apply - Default Env"){
+            steps{
+                sh returnStatus: true, script: 'ansible-playbook terraform.yml'
+            }
+        }
+
         stage("Terraform Init & Apply - Dev Env"){
             steps{
                 sh returnStatus: true, script: 'ansible-playbook terraform.yml -e app_end=dev'
