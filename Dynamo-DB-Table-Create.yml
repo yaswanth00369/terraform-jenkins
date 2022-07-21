@@ -1,6 +1,5 @@
 ---
-- host: all
-
+- host: localhost
   tasks:
     - name: Create Dynamo DB Table
       dynamodb_table:
