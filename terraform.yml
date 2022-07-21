@@ -17,7 +17,7 @@
         backend_config:
           region: "{{ region }}"
           bucket: "{{ bucket }}"
-          state_file: "{{ key }}"
+          key: "{{ key }}"
           dynamodb_table: "{{ dynamodb_table }}"
 
         variables_file: "{{ app_env }}.tfvars"
