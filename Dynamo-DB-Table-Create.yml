@@ -1,8 +1,10 @@
 --- # Create Dynamo DB Table
--   host: localhost
+-   hosts: localhost
+
     tasks:
+    
     - name: Create Dynamo DB Table
-      dynamodb_table:
+      community.aws.dynamodb_table:
         name: Game-Scores
         region: us-east-1
         hash_key_name: LockID
