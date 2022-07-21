@@ -18,19 +18,13 @@ pipeline{
 
         stage("Terraform Init & Apply - Dev Env"){
             steps{
-                sh "terraform init"
-                sh returnStatus: true, script: 'terraform workspace new Development'
-                sh "terraform workspace select Development"
-                sh "terraform destroy -var-file=dev.tfvars --auto-approve"
+                sh returnStatus: true, script: 'ansible-playbook terraform.yml -e -e app_env=dev'
             }
         }
     
         stage("Terraform Init & Apply - Prod Env"){
             steps{
-                sh "terraform init "
-                sh returnStatus: true, script: 'terraform workspace new Production'
-                sh "terraform workspace select Production"
-                sh "terraform destroy -var-file=prod.tfvars --auto-approve"
+                sh returnStatus: true, script: 'ansible-playbook terraform.yml -e app_env=prod'
             }
         }   
     }
