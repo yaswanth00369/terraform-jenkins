@@ -1,6 +1,6 @@
----
-- host: localhost
-  tasks:
+--- # Create S3 Bucket
+-   hosts: localhost
+    tasks:
     - name: Create S3 Bucket
       s3_bucket:
         name: jenkins-tfstate-bucket

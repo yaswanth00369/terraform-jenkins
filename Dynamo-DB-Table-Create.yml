@@ -1,6 +1,6 @@
----
-- host: localhost
-  tasks:
+--- # Create Dynamo DB Table
+-   host: localhost
+    tasks:
     - name: Create Dynamo DB Table
       dynamodb_table:
         name: Game-Scores
