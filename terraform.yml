@@ -14,11 +14,11 @@
         project_path: "./"
         state: "{{ state }}"
         force_init: true
-        backend_config:
-          region: "{{ region }}"
-          bucket: "{{ bucket }}"
-          key: "{{ key }}"
-          dynamodb_table: "{{ dynamodb_table }}"
+        # backend_config:
+        #   region: "{{ region }}"
+        #   bucket: "{{ bucket }}"
+        #   key: "{{ key }}"
+        #   dynamodb_table: "{{ dynamodb_table }}"
         variables_file: "{{ app_env }}.tfvars"
         workspace: "{{ app_env }}"
 
