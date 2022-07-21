@@ -6,13 +6,13 @@ pipeline{
 
         stage("Create S3 Bucket"){
             steps{
-                createS3Bucket('jenkins-tfstate-bucket')
+                sh returnStatus: true, script: 'ansible-playbook S3-Bucket-Create.yml'
             }
         }
 
         stage("Create DynamoDB Table"){
             steps{
-                createDynamoDBTable()
+                sh returnStatus: true, script: 'ansible-playbook Dynamo-DB-Table-Create.yml'
             }
         }
 
@@ -21,7 +21,7 @@ pipeline{
                 sh "terraform init"
                 sh returnStatus: true, script: 'terraform workspace new Development'
                 sh "terraform workspace select Development"
-                sh "terraform destroy -var-file=dev.tfvars --auto-approve"
+                sh "terraform apply -var-file=dev.tfvars --auto-approve"
             }
         }
     
@@ -30,7 +30,7 @@ pipeline{
                 sh "terraform init "
                 sh returnStatus: true, script: 'terraform workspace new Production'
                 sh "terraform workspace select Production"
-                sh "terraform destroy -var-file=prod.tfvars --auto-approve"
+                sh "terraform apply -var-file=prod.tfvars --auto-approve"
             }
         }   
     }
@@ -41,10 +41,7 @@ def getTerraformPath() {
     return tfHome
 }
 
-def createS3Bucket(bucketName){
-    sh returnStatus: true, script: " aws s3api create-bucket --bucket ${bucketName} --region us-east-1"
-    sh returnStatus: true, script: " aws s3api put-bucket-versioning --bucket ${bucketName} --versioning-configuration Status=Enabled --region us-east-1"
-}
+
 
 def createDynamoDBTable(){
     sh returnStatus: true, script: "aws dynamodb create-table --cli-input-json file://create-Ddb-table.json --region us-east-1"

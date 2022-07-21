@@ -1,0 +1,15 @@
+---
+- host: localhost
+
+  tasks:
+    - name: Create Dynamo DB Table
+      dynamodb_table:
+        name: Game-Scores
+        region: us-east-1
+        hash_key_name: LockID
+        hash_key_type: STRING
+        read_capacity: 2
+        write_capacity: 2
+        table_class: STANDARD
+        billing_mode: PROVISIONED
+      
