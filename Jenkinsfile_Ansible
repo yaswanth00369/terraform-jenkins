@@ -18,7 +18,7 @@ pipeline{
 
         stage("Terraform Init & Apply - Dev Env"){
             steps{
-                sh returnStatus: true, script: 'ansible-playbook terraform.yml -var-file dev.tfvars'
+                sh returnStatus: true, script: 'ansible-playbook terraform.yml -e app_end=dev'
             }
         }
     
