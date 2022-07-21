@@ -9,3 +9,6 @@
         hash_key_type: STRING
         read_capacity: 2
         write_capacity: 2
+        table_class: STANDARD
+        billing_mode: PROVISIONED
+      
