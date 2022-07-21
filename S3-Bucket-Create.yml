@@ -7,11 +7,5 @@
         state: present
         region: us-east-1
         force: yes
-        acl: private
         versioning: yes
         encryption: "AES256"
-        public_access:
-          block_public_acls: true
-          ignore_public_acls: true
-          block_public_policy: true
-          restrict_public_buckets: true
