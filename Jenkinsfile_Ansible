@@ -16,23 +16,49 @@ pipeline{
             }
         }
 
-        stage("Terraform Init & Apply/Destroy - Default Env > By Using YAML File"){
+        stage("Terraform Init & Apply/Destroy - Default Env"){
             steps{
-                sh 'ansible-playbook terraform.yml'
+                sh "terraform init"
+                sh "terraform workspace select default"
+                sh "terraform destroy -var-file=default.tfvars --auto-approve"
             }
         }
 
-        stage("Terraform Init & Apply/Destroy - Dev Env > By Using YAML File"){
+        stage("Terraform Init & Apply/Destroy - Dev Env"){
             steps{
-                sh 'ansible-playbook terraform.yml -e app_end=dev'
+                sh "terraform init"
+                sh returnStatus: true, script: 'terraform workspace new Development'
+                sh "terraform workspace select Development"
+                sh "terraform destroy -var-file=dev.tfvars --auto-approve"
             }
         }
     
-        stage("Terraform Init & Apply/Destroy - Prod Env > By Using YAML File"){
+        stage("Terraform Init & Apply/Destroy - Prod Env"){
             steps{
-                sh 'ansible-playbook terraform.yml -e app_env=prod'
+                sh "terraform init "
+                sh returnStatus: true, script: 'terraform workspace new Production'
+                sh "terraform workspace select Production"
+                sh "terraform destroy -var-file=prod.tfvars --auto-approve"
             }
         }   
+
+        // stage("Terraform Init & Apply/Destroy - Default Env > By Using YAML File"){
+        //     steps{
+        //         sh 'ansible-playbook terraform.yml'
+        //     }
+        // }
+
+        // stage("Terraform Init & Apply/Destroy - Dev Env > By Using YAML File"){
+        //     steps{
+        //         sh 'ansible-playbook terraform.yml -e app_end=dev'
+        //     }
+        // }
+    
+        // stage("Terraform Init & Apply/Destroy - Prod Env > By Using YAML File"){
+        //     steps{
+        //         sh 'ansible-playbook terraform.yml -e app_env=prod'
+        //     }
+        // }   
     }
 }
 
