@@ -5,20 +5,20 @@
     region: us-east-1
     key: terraform.tfstate
     bucket: jenkins-tfstate-bucket
-    dynamodb_table: Game-Scores
+    # dynamodb_table: Game-Scores
     app_env: default
 
   tasks:
     - name: Run The Terraform Scripts
       terraform:
-        project_path: "."
+        project_path: "./"
         state: "{{ state }}"
         force_init: true
         backend_config:
           region: "{{ region }}"
           bucket: "{{ bucket }}"
           key: "{{ key }}"
-          dynamodb_table: "{{ dynamodb_table }}"
+          # dynamodb_table: "{{ dynamodb_table }}"
         variables_file: "{{ app_env }}.tfvars"
         workspace: "{{ app_env }}"
 
