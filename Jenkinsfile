@@ -16,7 +16,7 @@ pipeline{
             }
         }
 
-        stage("Terraform Init & Apply - Default Env"){
+        stage("Terraform Init & Apply/Destroy - Default Env"){
             steps{
                 sh "terraform init"
                 sh "terraform workspace select default"
@@ -24,7 +24,7 @@ pipeline{
             }
         }
 
-        stage("Terraform Init & Apply - Dev Env"){
+        stage("Terraform Init & Apply/Destroy - Dev Env"){
             steps{
                 sh "terraform init"
                 sh returnStatus: true, script: 'terraform workspace new Development'
@@ -33,7 +33,7 @@ pipeline{
             }
         }
     
-        stage("Terraform Init & Apply - Prod Env"){
+        stage("Terraform Init & Apply/Destroy - Prod Env"){
             steps{
                 sh "terraform init "
                 sh returnStatus: true, script: 'terraform workspace new Production'
