@@ -1,12 +1,12 @@
 ---
 - hosts: localhost
   vars:
-    state: present
-    region: us-east-1
-    key: terraform.tfstate
-    bucket: jenkins-tfstate-bucket
-    # dynamodb_table: Game-Scores
-    app_env: default
+    state: "present"
+    region: "us-east-1"
+    key: "terraform.tfstate"
+    bucket: "jenkins-yaml-tfstate-bucket"
+    dynamodb_table: "jenkins-yaml-table"
+    app_env: "default"
 
   tasks:
     - name: Run The Terraform Scripts
@@ -18,7 +18,7 @@
           region: "{{ region }}"
           bucket: "{{ bucket }}"
           key: "{{ key }}"
-          # dynamodb_table: "{{ dynamodb_table }}"
+          dynamodb_table: "{{ dynamodb_table }}"
         variables_file: "{{ app_env }}.tfvars"
         workspace: "{{ app_env }}"
 

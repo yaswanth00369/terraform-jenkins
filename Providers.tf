@@ -4,9 +4,9 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "jenkins-tfstate-bucket"
+    bucket = "jenkins-yaml-tfstate-bucket"
     key    = "terraform.tfstate"
     region = "us-east-1"
-    /* dynamodb_table = "Game-Scores" */
+    dynamodb_table = "jenkins-yaml-table"
   }
 } 

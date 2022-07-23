@@ -10,37 +10,12 @@ pipeline{
             }
         }
 
-        // stage("Create DynamoDB Table > By Using YAML File"){
-        //     steps{
-        //         sh returnStatus: true, script: 'ansible-playbook Dynamo-DB-Table-Create.yml'
-        //     }
-        // }
-
-        // stage("Terraform Init & Apply/Destroy - Default Env"){
-        //     steps{
-        //         sh "terraform init"
-        //         sh "terraform workspace select default"
-        //         sh "terraform destroy -var-file=default.tfvars --auto-approve"
-        //     }
-        // }
-
-        // stage("Terraform Init & Apply/Destroy - Dev Env"){
-        //     steps{
-        //         sh "terraform init"
-        //         sh returnStatus: true, script: 'terraform workspace new Development'
-        //         sh "terraform workspace select Development"
-        //         sh "terraform destroy -var-file=dev.tfvars --auto-approve"
-        //     }
-        // }
-    
-        // stage("Terraform Init & Apply/Destroy - Prod Env"){
-        //     steps{
-        //         sh "terraform init "
-        //         sh returnStatus: true, script: 'terraform workspace new Production'
-        //         sh "terraform workspace select Production"
-        //         sh "terraform destroy -var-file=prod.tfvars --auto-approve"
-        //     }
-        // }   
+        stage("Create DynamoDB Table > By Using YAML File"){
+            steps{
+                sh returnStatus: true, script: 'ansible-playbook Dynamo-DB-Table-Create.yml'
+            }
+        }
+   
 
         stage("Terraform Init & Apply/Destroy - Default Env > By Using YAML File"){
             steps{
