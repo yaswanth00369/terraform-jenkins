@@ -13,7 +13,7 @@
       terraform:
         project_path: "./"
         state: "{{ state }}"
-        force_init: true
+        force_init: false
         # backend_config:
         #   region: "{{ region }}"
         #   bucket: "{{ bucket }}"
