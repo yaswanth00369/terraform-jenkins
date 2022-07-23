@@ -11,7 +11,7 @@
   tasks:
 
     - name: init terraform
-      shell: terraform init
+      shell: terraform validate
       args:
         chdir: ./
 
