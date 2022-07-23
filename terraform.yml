@@ -22,6 +22,3 @@
           dynamodb_table: "{{ dynamodb_table }}"
         variables_file: "{{ app_env }}.tfvars"
         workspace: "{{ app_env }}"
-
-
-
