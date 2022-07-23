@@ -16,21 +16,21 @@ pipeline{
             }
         }
 
-        stage("Terraform Init & Apply - Default Env > By Using YAML File"){
+        stage("Terraform Init & Apply/Destroy - Default Env > By Using YAML File"){
             steps{
-                sh returnStatus: true, script: 'ansible-playbook terraform.yml'
+                sh 'ansible-playbook terraform.yml'
             }
         }
 
-        stage("Terraform Init & Apply - Dev Env > By Using YAML File"){
+        stage("Terraform Init & Apply/Destroy - Dev Env > By Using YAML File"){
             steps{
-                sh returnStatus: true, script: 'ansible-playbook terraform.yml -e app_end=dev'
+                sh 'ansible-playbook terraform.yml -e app_end=dev'
             }
         }
     
-        stage("Terraform Init & Apply - Prod Env > By Using YAML File"){
+        stage("Terraform Init & Apply/Destroy - Prod Env > By Using YAML File"){
             steps{
-                sh returnStatus: true, script: 'ansible-playbook terraform.yml -e app_env=prod'
+                sh 'ansible-playbook terraform.yml -e app_env=prod'
             }
         }   
     }
