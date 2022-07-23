@@ -4,8 +4,8 @@
     state: "present"
     region: "us-east-1"
     key: "terraform.tfstate"
-    bucket: "jenkins-yaml-tfstate-bucket"
-    dynamodb_table: "jenkins-yaml-table"
+    bucket: "jenkins-tfstate-bucket"
+    dynamodb_table: "Game-Scores"
     app_env: "default"
 
   tasks:
@@ -14,12 +14,11 @@
         project_path: "./"
         state: "{{ state }}"
         force_init: true
-        terraform_init: yes
-        # backend_config:
-        #   region: "{{ region }}"
-        #   bucket: "{{ bucket }}"
-        #   key: "{{ key }}"
-        #   dynamodb_table: "{{ dynamodb_table }}"
+        backend_config:
+          region: "{{ region }}"
+          bucket: "{{ bucket }}"
+          key: "{{ key }}"
+          dynamodb_table: "{{ dynamodb_table }}"
         variables_file: "{{ app_env }}.tfvars"
         workspace: "{{ app_env }}"
 
