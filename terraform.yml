@@ -9,18 +9,12 @@
     app_env: "default"
 
   tasks:
-
-    - name: init terraform
-      shell: terraform init -backend=false
-      args:
-        chdir: ./
-
     - name: Run The Terraform Scripts
-      terraform:
+      community.general.terraform:
         project_path: "./"
         state: "{{ state }}"
-        # force_init: true
-        # lock: true
+        force_init: true
+        lock: true
         backend_config:
           region: "{{ region }}"
           bucket: "{{ bucket }}"
