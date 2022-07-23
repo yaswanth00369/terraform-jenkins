@@ -14,7 +14,7 @@
         project_path: "./"
         state: "{{ state }}"
         force_init: true
-        init_reconfigure: true
+        provider_upgrade: true
         lock: true
         backend_config:
           region: "{{ region }}"
