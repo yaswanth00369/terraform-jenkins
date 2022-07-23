@@ -14,6 +14,8 @@
         project_path: "./"
         state: "{{ state }}"
         force_init: true
+        init_reconfigure: true
+        lock: true
         backend_config:
           region: "{{ region }}"
           bucket: "{{ bucket }}"
