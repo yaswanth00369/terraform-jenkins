@@ -4,31 +4,31 @@ pipeline{
 
     stages{
 
-        stage("Create S3 Bucket"){
+        stage("Create S3 Bucket By > Using YAML File"){
             steps{
                 sh returnStatus: true, script: 'ansible-playbook S3-Bucket-Create.yml'
             }
         }
 
-        stage("Create DynamoDB Table"){
+        stage("Create DynamoDB Table > By Using YAML File"){
             steps{
                 sh returnStatus: true, script: 'ansible-playbook Dynamo-DB-Table-Create.yml'
             }
         }
 
-        stage("Terraform Init & Apply - Default Env"){
+        stage("Terraform Init & Apply - Default Env > By Using YAML File"){
             steps{
                 sh returnStatus: true, script: 'ansible-playbook terraform.yml'
             }
         }
 
-        stage("Terraform Init & Apply - Dev Env"){
+        stage("Terraform Init & Apply - Dev Env > By Using YAML File"){
             steps{
                 sh returnStatus: true, script: 'ansible-playbook terraform.yml -e app_end=dev'
             }
         }
     
-        stage("Terraform Init & Apply - Prod Env"){
+        stage("Terraform Init & Apply - Prod Env > By Using YAML File"){
             steps{
                 sh returnStatus: true, script: 'ansible-playbook terraform.yml -e app_env=prod'
             }

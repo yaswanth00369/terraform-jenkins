@@ -19,6 +19,7 @@ pipeline{
         stage("Terraform Init & Apply - Default Env"){
             steps{
                 sh "terraform init"
+                sh "terraform workspace select default"
                 sh "terraform apply -var-file=default.tfvars --auto-approve"
             }
         }
