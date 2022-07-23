@@ -9,6 +9,12 @@
     app_env: "default"
 
   tasks:
+
+    - name: init terraform
+      shell: terraform init
+      args:
+        chdir: ./
+
     - name: Run The Terraform Scripts
       terraform:
         project_path: "./"
@@ -19,6 +25,6 @@
           region: "{{ region }}"
           bucket: "{{ bucket }}"
           key: "{{ key }}"
-          # dynamodb_table: "{{ dynamodb_table }}"
+          dynamodb_table: "{{ dynamodb_table }}"
         variables_file: "{{ app_env }}.tfvars"
         workspace: "{{ app_env }}"
