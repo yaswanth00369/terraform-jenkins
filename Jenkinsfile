@@ -16,6 +16,13 @@ pipeline{
             }
         }
 
+        stage("Terraform Init & Apply - Default Env"){
+            steps{
+                sh "terraform init"
+                sh "terraform destroy -var-file=default.tfvars --auto-approve"
+            }
+        }
+
         stage("Terraform Init & Apply - Dev Env"){
             steps{
                 sh "terraform init"
