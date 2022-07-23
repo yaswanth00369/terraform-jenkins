@@ -10,11 +10,11 @@ pipeline{
             }
         }
 
-        stage("Create DynamoDB Table > By Using YAML File"){
-            steps{
-                sh returnStatus: true, script: 'ansible-playbook Dynamo-DB-Table-Create.yml'
-            }
-        }
+        // stage("Create DynamoDB Table > By Using YAML File"){
+        //     steps{
+        //         sh returnStatus: true, script: 'ansible-playbook Dynamo-DB-Table-Create.yml'
+        //     }
+        // }
 
         // stage("Terraform Init & Apply/Destroy - Default Env"){
         //     steps{

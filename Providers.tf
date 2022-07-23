@@ -7,6 +7,6 @@ terraform {
     bucket = "jenkins-tfstate-bucket"
     key    = "terraform.tfstate"
     region = "us-east-1"
-    dynamodb_table = "Game-Scores"
+    /* dynamodb_table = "Game-Scores" */
   }
 } 
