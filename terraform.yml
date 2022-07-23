@@ -11,7 +11,7 @@
   tasks:
     - name: Run The Terraform Scripts
       terraform:
-        project_path: "./"
+        project_path: "."
         state: "{{ state }}"
         force_init: true
         backend_config:
