@@ -9,6 +9,12 @@
     app_env: "default"
 
   tasks:
+
+    - name: Install collection community.network
+      community.general.ansible_galaxy_install:
+        type: collection
+        name: community.general
+
     - name: Run The Terraform Scripts
       terraform:
         project_path: "./"
