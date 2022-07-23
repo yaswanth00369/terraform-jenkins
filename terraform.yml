@@ -10,7 +10,7 @@
 
   tasks:
     - name: Run The Terraform Scripts
-      community.general.terraform:
+      terraform:
         project_path: "./"
         state: "{{ state }}"
         force_init: true
