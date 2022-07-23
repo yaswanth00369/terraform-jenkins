@@ -19,7 +19,7 @@ pipeline{
         stage("Terraform Init & Apply - Default Env"){
             steps{
                 sh "terraform init"
-                sh "terraform destroy -var-file=default.tfvars --auto-approve"
+                sh "terraform apply -var-file=default.tfvars --auto-approve"
             }
         }
 
@@ -28,7 +28,7 @@ pipeline{
                 sh "terraform init"
                 sh returnStatus: true, script: 'terraform workspace new Development'
                 sh "terraform workspace select Development"
-                sh "terraform destroy -var-file=dev.tfvars --auto-approve"
+                sh "terraform apply -var-file=dev.tfvars --auto-approve"
             }
         }
     
@@ -37,7 +37,7 @@ pipeline{
                 sh "terraform init "
                 sh returnStatus: true, script: 'terraform workspace new Production'
                 sh "terraform workspace select Production"
-                sh "terraform destroy -var-file=prod.tfvars --auto-approve"
+                sh "terraform apply -var-file=prod.tfvars --auto-approve"
             }
         }   
     }
